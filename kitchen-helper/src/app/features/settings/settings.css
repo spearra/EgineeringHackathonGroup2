@@ -1,0 +1,319 @@
+.settings-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.settings-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.settings-section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--label-color);
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--input-bg);
+    color: var(--input-color);
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1);
+    }
+  }
+
+  /* Updated range slider with standard properties */
+  .range-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--slider-bg);
+    outline: none;
+    
+    /* Use standard appearance property with fallback */
+    appearance: none;
+    -webkit-appearance: none; /* Still needed for older WebKit browsers */
+    -moz-appearance: none;
+
+    /* Webkit thumb styling */
+    &::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none; /* Needed for WebKit */
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    /* Firefox thumb styling */
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    /* Firefox track styling */
+    &::-moz-range-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: var(--slider-bg);
+      border-radius: 3px;
+      border: none;
+    }
+  }
+}
+
+.checkbox-group {
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    
+    input[type="checkbox"] {
+      margin-right: 0.75rem;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary-color);
+      cursor: pointer;
+    }
+  }
+}
+
+.color-blind-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+
+  select {
+    flex: 1;
+  }
+
+  .btn-preview {
+    padding: 0.75rem 1rem;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background: var(--secondary-color-dark);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.settings-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+
+    &.btn-secondary {
+      background: var(--secondary-color);
+      color: white;
+
+      &:hover {
+        background: var(--secondary-color-dark);
+      }
+    }
+
+    &.btn-outline {
+      background: transparent;
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+
+      &:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+    }
+  }
+
+  .file-input-label {
+    display: inline-block;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 1rem;
+  }
+
+  .settings-header h1 {
+    font-size: 2rem;
+  }
+
+  .color-blind-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .settings-actions {
+    flex-direction: column;
+
+    .btn {
+      text-align: center;
+    }
+  }
+}
+
+/* CSS Custom Properties for theming */
+:root {
+  --primary-color: #4a90e2;
+  --primary-color-rgb: 74, 144, 226;
+  --secondary-color: #f39c12;
+  --secondary-color-dark: #d68910;
+  --bg-color: #ffffff;
+  --card-bg: #f8f9fa;
+  --text-color: #333333;
+  --heading-color: #2c3e50;
+  --label-color: #555555;
+  --border-color: #e1e5e9;
+  --input-bg: #ffffff;
+  --input-color: #333333;
+  --input-border: #ddd;
+  --slider-bg: #ddd;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --card-bg: #2d2d2d;
+  --text-color: #ffffff;
+  --heading-color: #ffffff;
+  --label-color: #cccccc;
+  --border-color: #404040;
+  --input-bg: #3d3d3d;
+  --input-color: #ffffff;
+  --input-border: #555;
+  --slider-bg: #555;
+}
+
+/* Font size variations */
+[data-font-size="small"] {
+  font-size: 14px;
+}
+
+[data-font-size="medium"] {
+  font-size: 16px;
+}
+
+[data-font-size="large"] {
+  font-size: 18px;
+}
+
+[data-font-size="extra-large"] {
+  font-size: 20px;
+}
+
+/* High contrast mode */
+.high-contrast {
+  --primary-color: #0066cc;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #000000;
+  filter: contrast(150%);
+}
+
+/* Reduce motion */
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Color blind filters (these would need SVG filters defined in your HTML) */
+[data-color-blind="protanopia"] {
+  filter: url('#protanopia-filter');
+}
+
+[data-color-blind="deuteranopia"] {
+  filter: url('#deuteranopia-filter');
+}
+
+[data-color-blind="tritanopia"] {
+  filter: url('#tritanopia-filter');
+}
