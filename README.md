@@ -1,6 +1,9 @@
 ## To Run:
 
-#### Open EngineeringHackathonGroup2 in VSCode
+#### Clone repository
+
+
+#### Open the repository in VSCode
 
 
 #### Install npm/node (using chocolatey or nvm):
@@ -28,6 +31,7 @@ export const environment = {
 
 
 #### Run web app
+- cd kitchen-helper
 - run npm install
 - run ng serve
 
