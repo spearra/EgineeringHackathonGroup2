@@ -16,7 +16,7 @@
     </div>
     <hr style="border-top: 2px solid #bbb; margin: 20px 0;">
 
-    <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
+    <div class="row" style="display: flex; flex-wrap: wrap; gap: 50px;">
         <div class="col-md-6" style="flex: 1;">
             <div class="form-group" style="margin-bottom: 30px;">
                 <h3 style="font-size: 24px; color: #34495e;">What ingredients do you have?</h3>
@@ -48,9 +48,7 @@
             @if(showSpinner) {
                 <h4 style="font-size: 20px; color: #888;">Processing, please wait...</h4>
             }
-            <div style="background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 20px; font-size: 18px; white-space: pre-line; min-height: 200px;">
-                {{responseStr}}
-            </div>                      
+            <div [innerHTML]="responseStr"></div>                   
         </div>
     </div>
 </div>

@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { AppSettings, SettingsComponent } from '../settings/settings';
 import { SettingsService } from '../settings/settings.service';
 import { environment } from '../../../environments/environment';
+import {marked} from 'marked';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-chat-form',
@@ -17,7 +19,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ChatForm implements OnInit{
 
-  responseStr!: string;
+  responseStr: SafeHtml='';
   gptModels = gptModels;
   promptText = '';
   showSpinner = false;
@@ -29,7 +31,10 @@ export class ChatForm implements OnInit{
   ngOnInit(): void {
   }
 
-  constructor(private settingsService: SettingsService) {}
+  constructor(private settingsService: SettingsService,
+    private sanitizer: DomSanitizer) {
+    
+  }
 
   checkResponse() {
     const apiKey = environment.apiKey;
@@ -75,9 +80,9 @@ export class ChatForm implements OnInit{
       instructions: 'You are a recipe generator for an old person',
       input: this.promptText,
     });
-    this.responseStr = response.output_text;
-
-    this.showSpinner = false;
+    const html = await marked(response.output_text);
+  this.responseStr = this.sanitizer.bypassSecurityTrustHtml(html);
+  this.showSpinner = false;
   }
 
 
