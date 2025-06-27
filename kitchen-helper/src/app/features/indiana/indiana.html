@@ -1,0 +1,90 @@
+<div class="indiana-container">
+  <div class="indiana-header">
+    <!-- Back Button -->
+    <a [routerLink]="['']">
+    <button 
+        style="position: absolute; top: 20px; right: 20px; background-color: #e0e0e0; color: #2c3e50; border: none; padding: 10px 16px; font-size: 16px; border-radius: 6px; cursor: pointer;"
+    >
+        ← Back
+    </button>
+    </a>
+    
+    <h1>🌽 Indiana Cuisine Guide</h1>
+    <p class="subtitle">Authentic Hoosier recipes and seasonal favorites</p>
+  </div>
+
+  <div class="intro-section">
+    <h2>🏠 Welcome to Hoosier Cooking!</h2>
+    <p>Indiana's cuisine celebrates farm-fresh ingredients, hearty comfort foods, and seasonal specialties. From the famous pork tenderloin sandwich to sweet corn casseroles, these recipes represent the heart of Midwest cooking.</p>
+  </div>
+
+  <div class="recipe-categories">
+    <div class="recipe-category" *ngFor="let category of indianaRecipes">
+      <h2 class="category-title">{{ category.category }}</h2>
+      <div class="season-tag" *ngIf="category.season">
+        <span>{{ category.season }}</span>
+      </div>
+      
+      <div class="recipes">
+        <div class="recipe-card" *ngFor="let recipe of category.recipes">
+          <div class="recipe-header">
+            <h3 class="recipe-name">{{ recipe.name }}</h3>
+            <div class="recipe-meta">
+              <span class="difficulty" [style.background-color]="getDifficultyColor(recipe.difficulty)">
+                {{ recipe.difficulty }}
+              </span>
+              <span class="cook-time">⏱️ {{ recipe.cookTime }}</span>
+            </div>
+          </div>
+          
+          <p class="recipe-description">{{ recipe.description }}</p>
+          
+          <div class="recipe-details" *ngIf="recipe.ingredients">
+            <div class="ingredients-section">
+              <h4>📝 Ingredients:</h4>
+              <ul class="ingredients-list">
+                <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+              </ul>
+            </div>
+            
+            <div class="instructions-section" *ngIf="recipe.instructions">
+              <h4>👩‍🍳 Instructions:</h4>
+              <ol class="instructions-list">
+                <li *ngFor="let instruction of recipe.instructions">{{ instruction }}</li>
+              </ol>
+            </div>
+            
+            <div class="tips-section" *ngIf="recipe.tips">
+              <h4>💡 Tips:</h4>
+              <ul class="tips-list">
+                <li *ngFor="let tip of recipe.tips">{{ tip }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seasonal-guide">
+    <h2>🗓️ Indiana Seasonal Ingredient Guide</h2>
+    <div class="seasonal-items">
+      <div class="season-item">
+        <h3>Spring (March-May)</h3>
+        <p>Asparagus, rhubarb, spring onions, lettuce, radishes</p>
+      </div>
+      <div class="season-item">
+        <h3>Summer (June-August)</h3>
+        <p>Tomatoes, sweet corn, green beans, cucumbers, berries, melons</p>
+      </div>
+      <div class="season-item">
+        <h3>Fall (September-November)</h3>
+        <p>Apples, pumpkins, winter squash, persimmons, soybeans</p>
+      </div>
+      <div class="season-item">
+        <h3>Winter (December-February)</h3>
+        <p>Stored apples, root vegetables, preserved foods, holiday treats</p>
+      </div>
+    </div>
+  </div>
+</div>

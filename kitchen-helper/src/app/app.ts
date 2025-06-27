@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './features/settings/settings';
 import { MeatComponent } from './features/meat/meat';
+import { IndianaComponent } from './features/indiana/indiana';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class App {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SettingsComponent, MeatComponent],
+  imports: [SettingsComponent, MeatComponent, IndianaComponent],
   template: `
     <div class="app">
       <nav>
@@ -36,6 +37,14 @@ export class App {
       @if (showMeat) {
         <app-meat></app-meat>
       }
+
+      <nav>
+        <button (click)="showIndiana = !showIndiana">Settings</button>
+      </nav>
+
+      @if (showIndiana) {
+        <app-indiana></app-indiana>
+      }
     </div>
   `,
   styleUrls: ['./app.css']
@@ -43,6 +52,7 @@ export class App {
 export class AppComponent {
   showSettings = false;
   showMeat = false;
+  showIndiana = false;
 
   openSettings(): void {
     console.log('Opening settings');
@@ -62,5 +72,15 @@ export class AppComponent {
   closeMeat(): void {
     console.log('Closing meat - going back to home');
     this.showMeat = false;
+  }
+
+  openIndiana(): void {
+    console.log('Opening indiana');
+    this.showIndiana = true;
+  }
+
+  closeIndiana(): void {
+    console.log('Closing indiana - going back to home');
+    this.showIndiana = false;
   }
 }

@@ -1,0 +1,382 @@
+.indiana-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--bg-color, #ffffff);
+  color: var(--text-color, #000000);
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+.indiana-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+
+  .back-to-home-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: #8B4513;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+    .back-icon {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .back-text {
+      white-space: nowrap;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #8B4513;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+    color: #555;
+    margin: 0;
+  }
+}
+
+.intro-section {
+  background: #f8f4e6;
+  border: 2px solid #8B4513;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+
+  h2 {
+    font-size: 1.8rem;
+    color: #8B4513;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #654321;
+    margin: 0;
+    line-height: 1.7;
+  }
+}
+
+.recipe-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.recipe-category {
+  background: #fafafa;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  .category-title {
+    background: #8B4513;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .season-tag {
+    background: #e8f5e8;
+    text-align: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid #ddd;
+
+    span {
+      background: #28a745;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.recipes {
+  padding: 2rem;
+}
+
+.recipe-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .recipe-name {
+      font-size: 1.8rem;
+      color: #8B4513;
+      margin: 0;
+      font-weight: bold;
+      flex: 1;
+    }
+
+    .recipe-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .difficulty {
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .cook-time {
+        font-size: 1.1rem;
+        color: #666;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .recipe-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .recipe-details {
+    display: grid;
+    gap: 2rem;
+
+    h4 {
+      font-size: 1.4rem;
+      color: #8B4513;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #8B4513;
+      padding-bottom: 0.5rem;
+    }
+
+    .ingredients-list,
+    .instructions-list,
+    .tips-list {
+      margin: 0;
+      padding-left: 2rem;
+
+      li {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+        color: #333;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .instructions-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        counter-increment: step-counter;
+        position: relative;
+        padding-left: 3rem;
+        margin-bottom: 1rem;
+
+        &::before {
+          content: counter(step-counter);
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: #8B4513;
+          color: white;
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .tips-list {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 1rem;
+
+        &::before {
+          content: "💡";
+          position: absolute;
+          left: 0;
+          top: 0;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+.seasonal-guide {
+  background: #e8f5e8;
+  border: 2px solid #28a745;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 3rem;
+
+  h2 {
+    font-size: 1.8rem;
+    color: #155724;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 1rem;
+  }
+
+  .seasonal-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+
+    .season-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #c3e6cb;
+      text-align: center;
+
+      h3 {
+        font-size: 1.3rem;
+        color: #155724;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #495057;
+        margin: 0;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .indiana-container {
+    padding: 1rem;
+  }
+
+  .indiana-header {
+    .back-to-home-btn {
+      position: static;
+      margin: 0 auto 2rem auto;
+      width: fit-content;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+
+  .recipe-card .recipe-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .recipe-meta {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  .seasonal-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark theme support */
+[data-theme="dark"] {
+  .indiana-container {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .recipe-category {
+    background: #2d2d2d;
+    border-color: #404040;
+
+    .category-title {
+      background: #8B4513;
+    }
+  }
+
+  .recipe-card {
+    background: #2d2d2d;
+    border-color: #404040;
+
+    .recipe-name {
+      color: #cd853f;
+    }
+  }
+
+  .intro-section {
+    background: #2d2d1a;
+    border-color: #8B4513;
+
+    h2, p {
+      color: #cd853f;
+    }
+  }
+
+  .seasonal-guide {
+    background: #1a2f1a;
+    border-color: #28a745;
+
+    .season-item {
+      background: #2d2d2d;
+      border-color: #404040;
+    }
+  }
+}
