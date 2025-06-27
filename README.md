@@ -1,27 +1,27 @@
 ## To Run:
 
-#### Clone repository
+#### 1) Clone repository
 
 
-#### Open the repository in VSCode
+#### 2) Open the repository in VSCode
 
 
-#### Install npm/node (using chocolatey or nvm):
+#### 3) Install npm/node (using chocolatey or nvm):
 - choco install nodejs-lts
 - nvm install --lts
 
 
-#### Ensure npm and node are updated:
+#### 4) Ensure npm and node are updated:
 - npm install -g npm
 - npm install -g node
 
 
-#### Make sure you have npm and angular-cli installed:
+#### 5) Make sure you have npm and angular-cli installed:
 - nvm install --lts
 - npm install -g @angular/cli
 
 
-#### Place your API key in src/environments/environment.ts
+#### 6) Place your API key in src/environments/environment.ts
 ```typescript
 export const environment = {
   production: false,
@@ -30,7 +30,7 @@ export const environment = {
 ```
 
 
-#### Run web app
+#### 7) Run web app
 - cd kitchen-helper
 - npm install
 - ng serve --open
