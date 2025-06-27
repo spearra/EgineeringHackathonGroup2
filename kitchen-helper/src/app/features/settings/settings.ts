@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SettingsService } from './settings.service'; // adjust path as needed
 
 export interface AppSettings {
   measurementSystem: 'metric' | 'imperial';
@@ -92,7 +93,9 @@ export class SettingsComponent implements OnInit {
     kitchenTimerVibration: false
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private settingsService: SettingsService) {}
+
+  
 
   ngOnInit(): void {
     this.initializeForm();
@@ -143,6 +146,7 @@ export class SettingsComponent implements OnInit {
     this.settingsForm.valueChanges.subscribe((settings: AppSettings) => {
       this.saveSettings(settings);
       this.applySettings(settings);
+      this.settingsService.setSettings(settings);
     });
   }
 
