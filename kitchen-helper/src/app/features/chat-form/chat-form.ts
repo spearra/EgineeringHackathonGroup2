@@ -18,6 +18,9 @@ export class ChatForm implements OnInit{
   gptModels = gptModels;
   promptText = '';
   showSpinner = false;
+  ingredients = '';
+  dietaryRestrictions = '';
+  other = '';
 
 
   ngOnInit(): void {
@@ -25,7 +28,7 @@ export class ChatForm implements OnInit{
 
   checkResponse() {
     const client = new OpenAI({
-      apiKey: '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',
+      apiKey: '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',
       dangerouslyAllowBrowser: true
     });
     this.callAPI(client);
@@ -38,15 +41,19 @@ export class ChatForm implements OnInit{
   async callAPI(client: OpenAI) {
 
     this.showSpinner = true;
+
+    this.promptText = "Generate a recipe in plain text with the given ingredients: " + this.ingredients + 
+    ", the following dietary restrictions: " + this.dietaryRestrictions +
+    ", and the following additional requirements: " + this.other;
     
     const response = await client.responses.create({
       model: 'gpt-4o',
-      instructions: 'You are a recipe generator for an old person',
+      instructions: 'You are a recipe generator for an old person, specializing in Indiana-based cuisine and local ingrediants',
       input: this.promptText,
     });
     this.responseStr = response.output_text;
-    
-    console.log(response.output_text);
+
+    this.showSpinner = false;
   }
 
 
