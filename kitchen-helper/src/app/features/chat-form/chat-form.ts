@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponseModel } from '../model/gpt-response';
 import { gptModels } from '../model/constants';
-import { environment } from '../../../environments/environment';
 import { OpenAI } from 'openai/client.js';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppSettings, SettingsComponent } from '../settings/settings';
 import { SettingsService } from '../settings/settings.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-chat-form',
@@ -32,8 +32,9 @@ export class ChatForm implements OnInit{
   constructor(private settingsService: SettingsService) {}
 
   checkResponse() {
+    const apiKey = environment.apiKey;
     const client = new OpenAI({
-      apiKey: '',
+      apiKey: apiKey,
       dangerouslyAllowBrowser: true
     });
     this.callAPI(client);
@@ -71,7 +72,7 @@ export class ChatForm implements OnInit{
 
     const response = await client.responses.create({
       model: 'gpt-4o',
-      instructions: 'You are a recipe generator for an old person, specializing in Indiana-based cuisine and local ingrediants',
+      instructions: 'You are a recipe generator for an old person',
       input: this.promptText,
     });
     this.responseStr = response.output_text;
