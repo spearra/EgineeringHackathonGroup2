@@ -1,1 +1,58 @@
-<p>meat works!</p>
+<div class="meat-container">
+  <div class="meat-header">
+    <!-- Back Button -->
+    <a [routerLink]="['']">
+      <button 
+          style="position: absolute; top: 0px; right: -100px; background-color: #e0e0e0; color: #2c3e50; border: none; padding: 10px 16px; font-size: 16px; border-radius: 6px; cursor: pointer;"
+      >
+          ← Back
+      </button>
+    </a>
+    
+    <h1>🥩 Meat Temperature Safety Guide</h1>
+    <p class="subtitle">Safe cooking temperatures for all types of meat</p>
+  </div>
+
+  <div class="safety-warning">
+    <h2>⚠️ Important Safety Note</h2>
+    <p>Always use a food thermometer to check internal temperature. Let meat rest for 3 minutes before serving.</p>
+  </div>
+
+  <div class="meat-categories">
+    <div class="meat-category" *ngFor="let category of meatData">
+      <h2 class="category-title">{{ category.category }}</h2>
+      
+      <div class="meat-items">
+        <div class="meat-item" *ngFor="let item of category.items">
+          <div class="meat-name">{{ item.name }}</div>
+          
+          <div class="temperature-info">
+            <div class="temp-main" *ngIf="item.temperature !== 'Visual Check'">
+              <span class="fahrenheit">{{ item.temperature }}</span>
+              <span class="celsius" *ngIf="item.celsius">({{ item.celsius }})</span>
+            </div>
+            
+            <div class="temp-description" *ngIf="item.description">
+              {{ item.description }}
+            </div>
+            
+            <div class="visual-check" *ngIf="item.temperature === 'Visual Check'">
+              {{ item.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cooking-tips">
+    <h2>🔥 Cooking Tips</h2>
+    <ul>
+      <li>Insert thermometer into the thickest part of the meat</li>
+      <li>Avoid touching bone, fat, or gristle</li>
+      <li>Check temperature in multiple spots for large cuts</li>
+      <li>Ground meats need higher temperatures for safety</li>
+      <li>Let meat rest 3-10 minutes after cooking</li>
+    </ul>
+  </div>
+</div>

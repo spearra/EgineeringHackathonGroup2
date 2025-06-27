@@ -1,0 +1,344 @@
+/* Senior-friendly design with large fonts and high contrast */
+.meat-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--bg-color, #ffffff);
+  color: var(--text-color, #000000);
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+.meat-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+
+  .back-to-home-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+    .back-icon {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .back-text {
+      white-space: nowrap;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #2c5aa0;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+    color: #555;
+    margin: 0;
+  }
+}
+
+.safety-warning {
+  background: #fff3cd;
+  border: 3px solid #ffc107;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+
+  h2 {
+    font-size: 1.8rem;
+    color: #856404;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.3rem;
+    color: #856404;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.meat-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.meat-category {
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .category-title {
+    background: #2c5aa0;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 1.5rem;
+    letter-spacing: 1px;
+  }
+}
+
+.meat-items {
+  padding: 1.5rem;
+}
+
+.meat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .meat-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c5aa0;
+    flex: 1;
+  }
+
+  .temperature-info {
+    text-align: right;
+    flex: 1;
+
+    .temp-main {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      .fahrenheit {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #dc3545;
+      }
+
+      .celsius {
+        font-size: 1.4rem;
+        color: #6c757d;
+        font-weight: 500;
+      }
+    }
+
+    .temp-description,
+    .visual-check {
+      font-size: 1.1rem;
+      color: #495057;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .visual-check {
+      font-size: 1.3rem;
+      color: #28a745;
+      font-weight: 500;
+    }
+  }
+}
+
+.cooking-tips {
+  background: #e8f5e8;
+  border: 2px solid #28a745;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 3rem;
+
+  h2 {
+    font-size: 1.8rem;
+    color: #155724;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 1.2rem;
+      color: #155724;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #c3e6cb;
+      position: relative;
+      padding-left: 2rem;
+
+      &:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #28a745;
+        font-weight: bold;
+        font-size: 1.4rem;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+/* Responsive design for tablets and smaller screens */
+@media (max-width: 768px) {
+  .meat-container {
+    padding: 1rem;
+  }
+
+  .meat-header {
+    .back-to-home-btn {
+      position: static;
+      margin: 0 auto 2rem auto;
+      width: fit-content;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+    }
+  }
+
+  .meat-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+
+    .meat-name {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .temperature-info {
+      text-align: left;
+      width: 100%;
+
+      .temp-main {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .safety-warning {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .meat-container {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .meat-category {
+    border: 3px solid #000000;
+
+    .category-title {
+      background: #000000;
+      color: #ffffff;
+    }
+  }
+
+  .meat-item {
+    border: 2px solid #000000;
+
+    .meat-name {
+      color: #000000;
+    }
+
+    .temperature-info .fahrenheit {
+      color: #000000;
+    }
+  }
+}
+
+/* Dark theme support */
+[data-theme="dark"] {
+  .meat-container {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .meat-category {
+    background: #2d2d2d;
+    border-color: #404040;
+
+    .category-title {
+      background: #4a90e2;
+    }
+  }
+
+  .meat-item {
+    background: #2d2d2d;
+    border-color: #404040;
+
+    .meat-name {
+      color: #4a90e2;
+    }
+  }
+
+  .safety-warning {
+    background: #3d3000;
+    border-color: #ffc107;
+
+    h2, p {
+      color: #ffeb3b;
+    }
+  }
+
+  .cooking-tips {
+    background: #1a2f1a;
+    border-color: #28a745;
+
+    h2, li {
+      color: #4caf50;
+    }
+
+    li {
+      border-bottom-color: #2d4a2d;
+    }
+  }
+}
