@@ -32,8 +32,8 @@ export const environment = {
 
 #### Run web app
 - cd kitchen-helper
-- run npm install
-- run ng serve
+- npm install
+- ng serve --open
 
 
 Application will run on http://localhost:4200
