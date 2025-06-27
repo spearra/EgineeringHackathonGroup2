@@ -26,7 +26,9 @@
                 </div>
                 <div class="col-md-6">
                     <h3>Response from ChatGPT AI</h3><hr>
-                    <h4 *ngIf="showSpinner">Processing, please wait...</h4>
+                    @if (showSpinner) {
+                        <h4>Processing, please wait...</h4>
+                    }
                     <div>
                         {{responseStr}}
                     </div>                      
