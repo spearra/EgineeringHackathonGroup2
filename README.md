@@ -3,13 +3,14 @@
 #### Open EngineeringHackathonGroup2 in VSCode
 
 
-#### Install npm/node (using chocolatey):
+#### Install npm/node (using chocolatey or nvm):
 - choco install nodejs-lts
+- nvm install --lts
 
 
 #### Ensure npm and node are updated:
-- update npm: npm install -g npm
-- update node: npm install -g node
+- npm install -g npm
+- npm install -g node
 
 
 #### Make sure you have npm and angular-cli installed:
