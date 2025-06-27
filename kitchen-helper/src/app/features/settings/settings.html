@@ -1,0 +1,195 @@
+<div class="settings-container">
+  <div class="settings-header">
+    <h1>Kitchen App Settings</h1>
+    <p>Customize your cooking experience</p>
+  </div>
+
+  <form [formGroup]="settingsForm" class="settings-form">
+    
+    <!-- Measurement & Units Section -->
+    <div class="settings-section">
+      <h2>📏 Measurements & Units</h2>
+      
+      <div class="form-group">
+        <label for="measurementSystem">Measurement System</label>
+        <select id="measurementSystem" formControlName="measurementSystem" class="form-control">
+          @for (option of measurementOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="temperatureUnit">Temperature Unit</label>
+        <select id="temperatureUnit" formControlName="temperatureUnit" class="form-control">
+          @for (option of temperatureOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="defaultServings">Default Recipe Servings</label>
+        <input 
+          type="number" 
+          id="defaultServings" 
+          formControlName="defaultServings" 
+          class="form-control"
+          min="1" 
+          max="20">
+      </div>
+    </div>
+
+    <!-- Appearance Section -->
+    <div class="settings-section">
+      <h2>🎨 Appearance</h2>
+      
+      <div class="form-group">
+        <label for="theme">Theme</label>
+        <select id="theme" formControlName="theme" class="form-control">
+          @for (option of themeOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="fontSize">Font Size</label>
+        <select id="fontSize" formControlName="fontSize" class="form-control">
+          @for (option of fontSizeOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <!-- Accessibility Section -->
+    <div class="settings-section">
+      <h2>♿ Accessibility</h2>
+      
+      <div class="form-group">
+        <label for="colorBlindMode">Color Vision Adjustment</label>
+        <div class="color-blind-controls">
+          <select id="colorBlindMode" formControlName="colorBlindMode" class="form-control">
+            @for (option of colorBlindOptions; track option.value) {
+              <option [value]="option.value">{{ option.label }}</option>
+            }
+          </select>
+          <button 
+            type="button" 
+            class="btn-preview"
+            (click)="previewColorBlindMode(settingsForm.get('colorBlindMode')?.value)"
+            [disabled]="settingsForm.get('colorBlindMode')?.value === 'none'">
+            Preview
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="highContrast">
+          <span class="checkmark"></span>
+          High Contrast Mode
+        </label>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="reduceMotion">
+          <span class="checkmark"></span>
+          Reduce Motion & Animations
+        </label>
+      </div>
+    </div>
+
+    <!-- Timer & Notifications Section -->
+    <div class="settings-section">
+      <h2>⏰ Timers & Notifications</h2>
+      
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="timerSound">
+          <span class="checkmark"></span>
+          Timer Sound Effects
+        </label>
+      </div>
+
+      @if (settingsForm.get('timerSound')?.value) {
+        <div class="form-group">
+          <label for="timerVolume">Timer Volume: {{ settingsForm.get('timerVolume')?.value }}%</label>
+          <input 
+            type="range" 
+            id="timerVolume" 
+            formControlName="timerVolume" 
+            class="range-slider"
+            min="0" 
+            max="100" 
+            step="5">
+        </div>
+      }
+
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="kitchenTimerVibration">
+          <span class="checkmark"></span>
+          Vibration for Mobile Timers
+        </label>
+      </div>
+    </div>
+
+    <!-- Recipe & Data Section -->
+    <div class="settings-section">
+      <h2>📖 Recipes & Data</h2>
+      
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="autoSaveRecipes">
+          <span class="checkmark"></span>
+          Auto-save Recipe Changes
+        </label>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="showNutritionInfo">
+          <span class="checkmark"></span>
+          Show Nutritional Information
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="language">Language</label>
+        <select id="language" formControlName="language" class="form-control">
+          @for (option of languageOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <!-- Settings Management -->
+    <div class="settings-section">
+      <h2>⚙️ Settings Management</h2>
+      
+      <div class="settings-actions">
+        <button type="button" class="btn btn-secondary" (click)="resetToDefaults()">
+          Reset to Defaults
+        </button>
+        
+        <button type="button" class="btn btn-outline" (click)="exportSettings()">
+          Export Settings
+        </button>
+        
+        <label class="btn btn-outline file-input-label">
+          Import Settings
+          <input 
+            type="file" 
+            accept=".json" 
+            (change)="onImportSettings($event)"
+            style="display: none;">
+        </label>
+      </div>
+    </div>
+
+  </form>
+</div>
