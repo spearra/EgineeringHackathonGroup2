@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 export interface AppSettings {
   measurementSystem: 'metric' | 'imperial';
@@ -24,12 +25,15 @@ export interface AppSettings {
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule  // Make sure this is here!
+    ReactiveFormsModule,  // Make sure this is here!
+    RouterModule
   ],
   templateUrl: './settings.html',
   styleUrls: ['./settings.css']
 })
 export class SettingsComponent implements OnInit {
+  @Output() backToHome = new EventEmitter<void>();
+
   settingsForm!: FormGroup; // Use definite assignment assertion
   
   measurementOptions = [
@@ -94,6 +98,10 @@ export class SettingsComponent implements OnInit {
     this.initializeForm();
     this.loadSettings();
     this.setupFormSubscriptions();
+  }
+
+  onBackToHome(): void {
+    this.backToHome.emit();
   }
 
   private initializeForm(): void {

@@ -1,5 +1,14 @@
 <div class="settings-container">
   <div class="settings-header">
+    <!-- Back Button -->
+    <a [routerLink]="['']">
+      <button 
+          style="position: absolute; top: 20px; right: 20px; background-color: #e0e0e0; color: #2c3e50; border: none; padding: 10px 16px; font-size: 16px; border-radius: 6px; cursor: pointer;"
+      >
+          ← Back
+      </button>
+    </a>
+    
     <h1>Kitchen App Settings</h1>
     <p>Customize your cooking experience</p>
   </div>
@@ -13,18 +22,18 @@
       <div class="form-group">
         <label for="measurementSystem">Measurement System</label>
         <select id="measurementSystem" formControlName="measurementSystem" class="form-control">
-          @for (option of measurementOptions; track option.value) {
-            <option [value]="option.value">{{ option.label }}</option>
-          }
+          <option *ngFor="let option of measurementOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="temperatureUnit">Temperature Unit</label>
         <select id="temperatureUnit" formControlName="temperatureUnit" class="form-control">
-          @for (option of temperatureOptions; track option.value) {
-            <option [value]="option.value">{{ option.label }}</option>
-          }
+          <option *ngFor="let option of temperatureOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
         </select>
       </div>
 
@@ -47,18 +56,18 @@
       <div class="form-group">
         <label for="theme">Theme</label>
         <select id="theme" formControlName="theme" class="form-control">
-          @for (option of themeOptions; track option.value) {
-            <option [value]="option.value">{{ option.label }}</option>
-          }
+          <option *ngFor="let option of themeOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="fontSize">Font Size</label>
         <select id="fontSize" formControlName="fontSize" class="form-control">
-          @for (option of fontSizeOptions; track option.value) {
-            <option [value]="option.value">{{ option.label }}</option>
-          }
+          <option *ngFor="let option of fontSizeOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
         </select>
       </div>
     </div>
@@ -71,9 +80,9 @@
         <label for="colorBlindMode">Color Vision Adjustment</label>
         <div class="color-blind-controls">
           <select id="colorBlindMode" formControlName="colorBlindMode" class="form-control">
-            @for (option of colorBlindOptions; track option.value) {
-              <option [value]="option.value">{{ option.label }}</option>
-            }
+            <option *ngFor="let option of colorBlindOptions" [value]="option.value">
+              {{ option.label }}
+            </option>
           </select>
           <button 
             type="button" 
@@ -114,19 +123,17 @@
         </label>
       </div>
 
-      @if (settingsForm.get('timerSound')?.value) {
-        <div class="form-group">
-          <label for="timerVolume">Timer Volume: {{ settingsForm.get('timerVolume')?.value }}%</label>
-          <input 
-            type="range" 
-            id="timerVolume" 
-            formControlName="timerVolume" 
-            class="range-slider"
-            min="0" 
-            max="100" 
-            step="5">
-        </div>
-      }
+      <div class="form-group" *ngIf="settingsForm.get('timerSound')?.value">
+        <label for="timerVolume">Timer Volume: {{ settingsForm.get('timerVolume')?.value }}%</label>
+        <input 
+          type="range" 
+          id="timerVolume" 
+          formControlName="timerVolume" 
+          class="range-slider"
+          min="0" 
+          max="100" 
+          step="5">
+      </div>
 
       <div class="form-group checkbox-group">
         <label class="checkbox-label">
@@ -160,9 +167,9 @@
       <div class="form-group">
         <label for="language">Language</label>
         <select id="language" formControlName="language" class="form-control">
-          @for (option of languageOptions; track option.value) {
-            <option [value]="option.value">{{ option.label }}</option>
-          }
+          <option *ngFor="let option of languageOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
         </select>
       </div>
     </div>

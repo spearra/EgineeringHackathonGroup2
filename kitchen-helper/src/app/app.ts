@@ -35,4 +35,14 @@ export class App {
 })
 export class AppComponent {
   showSettings = false;
+
+  openSettings(): void {
+    console.log('Opening settings');
+    this.showSettings = true;
+  }
+
+  closeSettings(): void {
+    console.log('Closing settings - going back to home');
+    this.showSettings = false;
+  }
 }
