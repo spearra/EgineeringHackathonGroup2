@@ -1,19 +1,28 @@
-<p>Welcome</p>
-<a [routerLink]="['/recipes']">
-<button
-        style="font-size: 20px; padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
-    View Recipes
-</button>
-</a>
-<a [routerLink]="['/settings']">
-<button
-        style="font-size: 20px; padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
-    Settings
-</button>
-</a>
-<a [routerLink]="['/meat']">
-<button
-        style="font-size: 20px; padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
-    Meat
-</button>
-</a>
+<div style="display: flex; flex-direction: column; align-items: center; height: 100vh; margin: 0; padding: 0;">
+    <img 
+      src="assets/1.png" 
+      alt="Welcome!" 
+      style="width: 100%; height: 80vh; object-fit: contain; display: block; background-color: #fff;"
+    />
+  
+    <div style="margin-top: 20px; display: flex; gap: 16px; justify-content: center; width: 100%;">
+      <a [routerLink]="['/recipes']">
+        <button
+          style="font-size: 20px; padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
+          View Recipes
+        </button>
+      </a>
+      <a [routerLink]="['/settings']">
+        <button
+          style="font-size: 20px; padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Settings
+        </button>
+      </a>
+      <a [routerLink]="['/meat']">
+        <button
+          style="font-size: 20px; padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Meat
+        </button>
+      </a>
+    </div>
+  </div>
